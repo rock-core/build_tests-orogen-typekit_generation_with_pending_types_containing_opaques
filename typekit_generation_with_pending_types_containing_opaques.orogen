@@ -1,0 +1,13 @@
+name 'typekit_generation_with_pending_types_containing_opaques'
+
+import_types_from 'base'
+import_types_from 'typekit_generation_with_pending_types_containing_opaquesTypes.hpp'
+
+type_export_policy :all
+
+# At this point, the Types.hpp header is not yet loaded. The bug was that
+# Typekit#generate was not processing the pending loads before it was handling
+# opaque generation
+#
+# It was causing the generation to fail. Passing code generation is enough as a
+# test.
